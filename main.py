@@ -1,10 +1,12 @@
 from blood_drive_decoder import BloodDriveDecoder
-from filters import CityFilter
+import filters as f
+from gcalendar import GCalendar
 
 if __name__ == '__main__':
-	cf = CityFilter('Hull')
-	decoder = BloodDriveDecoder()
-	decoder.get_blood_drives()
-	drives = cf.filter(*decoder.blood_drives)
-	for drive in drives:
-		print(drive.to_string())
+    blood_drives = BloodDriveDecoder().get_blood_drives()
+    filters = f.get_filters('./config.json')
+    filtered_drives = f.apply_filters(filters, blood_drives)
+    #calendar = GCalendar()
+    for drive in filtered_drives:
+        print(drive.to_string())
+    

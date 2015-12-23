@@ -1,0 +1,48 @@
+{
+    "url" : "http://www.hema-quebec.qc.ca/index.en.html",
+    "posts" : [
+        {
+            "postalCode" : "",
+            "method:searchBloodDrives" : "",
+            "selectedWeekIndex" : "0",
+            "pcLatitude" : "0",
+            "pcLongitude" : "0",
+            "idViewToDisplay" : "map-list",
+            "cleanSessionFromBloodDrives" : "true"
+        },
+        {
+            "postalCode" : "",
+            "method:searchBloodDrives" : "",
+            "selectedWeekIndex" : "1",
+            "pcLatitude" : "0",
+            "pcLongitude" : "0",
+            "idViewToDisplay" : "map-list",
+            "cleanSessionFromBloodDrives" : "true"
+        },
+        {
+            "postalCode" : "",
+            "method:searchBloodDrives" : "",
+            "selectedWeekIndex" : "2",
+            "pcLatitude" : "0",
+            "pcLongitude" : "0",
+            "idViewToDisplay" : "map-list",
+            "cleanSessionFromBloodDrives" : "true"
+        }
+    ],
+
+    "strings" : {
+        "blood_drive_tables" : "//table[@class='don-table']",
+        "date" : "thead",
+        "row" : "tbody/tr",
+        "city" : "td[@class='address']/div/p[1]",
+        "address" : "td[@class='address']/div/p[2]",
+        "time" : "td/p[@class='hours-detail']",
+        "calendar" : "td/p[@class='calendar']/a",
+        "map" : "td[@class='address']/div/a",
+        "by_appointment" : "td[@class='hours']/p[contains(@class,'bonhomme')]",
+        "date_regexp" : "\\w+, (?P<month>\\w+) (?P<day>[0-9]{1,2})",
+        "time_regexp" : "[0-9]{1,2}:[0-9]{2}\\s[AP]M",
+        "date_format" : "%A, %B %d",
+        "time_format" : "%I:%M %p"
+    }
+}

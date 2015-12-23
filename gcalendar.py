@@ -67,5 +67,11 @@ class GCalendar:
                 'dateTime': blood_drive.end_time.isoformat('T'),
                 'timeZone': 'America/Toronto',
             },
+            'reminders': {
+                'useDefault': False,
+                'overrides': [],
+            },
+            'colorId': 4,
+            'id': blood_drive.event_id,
         }
         return event_body

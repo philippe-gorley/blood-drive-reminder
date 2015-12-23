@@ -9,17 +9,17 @@ class BloodDrive:
     START_TIME = 0
     END_TIME = -1
 
-    def __init__(self, date, data):
+    def __init__(self, date, html):
         hq_json = 'hema_quebec.json'
         with open(hq_json) as f:
             strings = json.load(f)['strings']
-        start_hour = self.get_time(data, strings['time'], strings['time_regexp'], BloodDrive.START_TIME)
-        end_hour = self.get_time(data, strings['time'], strings['time_regexp'], BloodDrive.END_TIME)
+        start_hour = self.get_time(html, strings['time'], strings['time_regexp'], BloodDrive.START_TIME)
+        end_hour = self.get_time(html, strings['time'], strings['time_regexp'], BloodDrive.END_TIME)
         self.start_time = self.parse_date(date, strings['date_format'], start_hour, strings['time_format'])
         self.end_time = self.parse_date(date, strings['date_format'], end_hour, strings['time_format'])
-        self.city = self.get_content(data, strings['city'])
-        self.ics_link = self.get_link(data, strings['calendar'])
-        self.map_link = self.get_link(data, strings['map'])
+        self.city = self.get_content(html, strings['city'])
+        self.ics_link = self.get_link(html, strings['calendar'])
+        self.map_link = self.get_link(html, strings['map'])
         self.address = self.get_address()
         self.event_id = self.gen_id()
 
@@ -28,15 +28,15 @@ class BloodDrive:
         addr = parse_qs(qs)['q'][0]
         return addr
 
-    def get_content(self, xml, xpath):
-        return xml.xpath(xpath)[0].text_content().strip()
+    def get_content(self, html, xpath):
+        return html.xpath(xpath)[0].text_content().strip()
 
-    def get_time(self, xml, xpath, regexp, i):
-        time = xml.xpath(xpath)[0].text_content()
+    def get_time(self, html, xpath, regexp, i):
+        time = html.xpath(xpath)[0].text_content()
         return re.findall(regexp, time)[i].strip()
 
-    def get_link(self, xml, xpath):
-        return xml.xpath(xpath)[0].get('href').strip()
+    def get_link(self, html, xpath):
+        return html.xpath(xpath)[0].get('href').strip()
 
     def gen_id(self):
         start = self.start_time.strftime('%Y%m%d')

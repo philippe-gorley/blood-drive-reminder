@@ -71,7 +71,7 @@ class GCalendar:
                 'useDefault': False,
                 'overrides': [],
             },
-            'colorId': 4,
+            'colorId': 4,  # light red
             'id': blood_drive.event_id,
         }
         return event_body

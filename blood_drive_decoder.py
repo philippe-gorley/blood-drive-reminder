@@ -7,19 +7,10 @@ from blood_drive import BloodDrive
 class BloodDriveDecoder:
 
     def __init__(self):
-        #self.blood_drives = []
         with open('hema_quebec.json') as f:
             self.data = json.load(f)
 
     def get_blood_drives(self):
-        #post_values = HemaQuebec.POST_VALUES
-        #for i in range(HemaQuebec.WEEK_COUNT):
-        #    post_values['selectedWeekIndex'] = str(i)
-        #    payload = urllib.parse.urlencode(post_values)
-        #    payload = payload.encode('utf-8')
-        #    req = urllib.request.Request(HemaQuebec.URL_EN, payload)
-        #    self.extract_blood_drives(self.get_html_tables(req))
-        #return self.blood_drives
         blood_drives = []
         for post_values in self.data['posts']:
             payload = urllib.parse.urlencode(post_values)

@@ -22,7 +22,6 @@ class Geocoder:
         if address in self._cache:
             loc = self._cache[address]
         else:
-            print('Address not in cache')
             time.sleep(0.5)  # don't spam the geocoding service
             loc = self.geocoder.geocode(address)
             self._cache[address] = loc
